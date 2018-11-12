@@ -39,5 +39,24 @@ public class JavaFunctionalInterfacesImplementation {
         int sum = values.stream()
                 .reduce(0, sumOperator);
         System.out.println("sum=" + sum);
+
+        System.out.println("//------------");
+
+        CustomInterface<Double> numberMaker1 = new CustomInterface<Double>() {
+            @Override
+            public Double perform(double i1, double i2) {
+                return i1*10+i2;
+            }
+        };
+        System.out.println("Inner anonymous class: " + numberMaker1.perform(4, 2) );
+
+        CustomInterface<Double> numberMaker2 = (i1, i2) -> (i2*10+i1);
+        System.out.println("Lambda implementation: " +  numberMaker2.perform(4, 2));
+
+        System.out.println("1st default method: " + numberMaker2.standartisizeString("schwaRtsneGER"));
+        System.out.println("2st default method: " + numberMaker2.cutLastLetter("schwaRtsneGER"));
+        System.out.println("1st static method: " + CustomInterface.returnHardcodedString());
+        System.out.println("2st static method: " + CustomInterface.concatenateStrings("Apple", "Pen"));
+
     }
 }
