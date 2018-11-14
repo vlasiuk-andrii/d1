@@ -48,7 +48,7 @@ public class Main {
 
         Book[] booksArr = new Book[]{book1, book2, book3};
 
-        // a. check if some/all book(s) have more than 200 pages;
+        // 3a. check if some/all book(s) have more than 200 pages;
         System.out.println("a.Some book has more then 200 pages: " +
                 Arrays.stream(booksArr)
                         .anyMatch(book -> book.getNumberOfPages() > 200));
@@ -100,12 +100,33 @@ public class Main {
                         .forEach(System.out::println);
 
         //g. get distinct list of all authors
-        System.out.println("Distinct list of all authors: ");
-//        List<String> fullAuthorsList = Arrays.stream(booksArr)
-//                .forEach(book -> book.getAuthors().stream()
-//                                            .distinct());
+        List<String> fullAuthorsList = Arrays.stream(booksArr)
+                .map(Book::getAuthors)
+                .flatMap(Collection::stream)
+                .map(Author::getName)
+                .distinct()
+                .collect(Collectors.toList());
+        System.out.println("g.Distinct list of all authors: " + fullAuthorsList.toString());
 
 
+        //4.  Use peek method for debugging intermediate streams during execution the previous task.
+        List<String> fullAuthorsList1 = Arrays.stream(booksArr)
+                .map(Book::getAuthors)
+                .peek(e -> System.out.println("List of authors: " + e))
+                .flatMap(Collection::stream)
+                .peek(e -> System.out.println("Authors: " + e))
+                .map(Author::getName)
+                .peek(e -> System.out.println("Before distinct(): " + e))
+                .distinct()
+                .collect(Collectors.toList());
+        System.out.println("g.Distinct list of all authors: " + fullAuthorsList1.toString());
+
+        //5. Use parallel stream with subtask #3
+        System.out.print("5. Books with multiple author (Parallel stream): ");
+        Arrays.stream(booksArr)
+                .parallel()
+                .filter(book -> book.getAuthors().size() == 2)
+                .forEach(book -> System.out.println(book.getTitle()));
 
     }
 }
