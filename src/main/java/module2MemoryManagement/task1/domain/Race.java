@@ -1,7 +1,8 @@
-package module2MemoryManagement.task1;
+package module2MemoryManagement.task1.domain;
 
 public class Race {
     private int number;
+    private Hourse winner;
 
     public Race() {
     }
@@ -14,10 +15,19 @@ public class Race {
         return this;
     }
 
+    public Hourse getWinner() {
+        return winner;
+    }
+
+    public void setWinner(Hourse winner) {
+        this.winner = winner;
+    }
+
     @Override
     public String toString() {
         return "Race{" +
                 "number=" + number +
+                ", winner=" + winner +
                 '}';
     }
 }

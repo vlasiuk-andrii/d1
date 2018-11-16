@@ -1,4 +1,4 @@
-package module2MemoryManagement.task1;
+package module2MemoryManagement.task1.domain;
 
 public class Hourse {
 

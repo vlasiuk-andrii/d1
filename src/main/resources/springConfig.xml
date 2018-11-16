@@ -4,6 +4,32 @@
        xsi:schemaLocation="
 http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
-    <!-- <bean/> definitions here -->
+    <bean id="hourse1" name="Hourse1" class="module2MemoryManagement.task1.domain.Hourse">
+        <property name="rider" value="John"/>
+        <property name="breed" value="breed8"/>
+        <property name="power" value="5"/>
+    </bean>
+
+    <bean id="hourse2" name="Hourse2" class="module2MemoryManagement.task1.domain.Hourse">
+        <property name="rider" value="Brad"/>
+        <property name="breed" value="breed15"/>
+        <property name="power" value="2"/>
+    </bean>
+
+    <bean id="hourse3" name="Hourse3" class="module2MemoryManagement.task1.domain.Hourse">
+        <property name="rider" value="Katrin"/>
+        <property name="breed" value="breed9"/>
+        <property name="power" value="6"/>
+    </bean>
+
+    <bean id="hourse4" name="Hourse4" class="module2MemoryManagement.task1.domain.Hourse">
+        <property name="rider" value="Bob"/>
+        <property name="breed" value="breed2"/>
+        <property name="power" value="6"/>
+    </bean>
+
+    <bean id="hourseService" name="HourseService" class="HourseService">
+        <property name="hourses" ref="hourse1"/>
+    </bean>
 
 </beans>
