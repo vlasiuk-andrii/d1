@@ -1,15 +1,17 @@
 package module2MemoryManagement.task1.domain;
 
-public class Hourse {
+public class Horse {
 
     private Rider rider;
     private Breed breed;
     private int power;
 
-    public Hourse() {
+    private int id;
+
+    public Horse() {
     }
 
-    public Hourse(Rider rider, Breed breed, int power) {
+    public Horse(Rider rider, Breed breed, int power) {
         this.rider = rider;
         this.breed = breed;
         this.power = power;
@@ -39,10 +41,19 @@ public class Hourse {
         this.power = power;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     @Override
     public String toString() {
-        return "Hourse{" +
-                "rider=" + rider +
+        return "Horse{" +
+                "id=" + id +
+                ", rider=" + rider +
                 ", breed=" + breed +
                 ", power=" + power +
                 '}';
