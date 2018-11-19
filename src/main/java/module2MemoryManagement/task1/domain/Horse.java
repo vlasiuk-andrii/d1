@@ -4,17 +4,17 @@ public class Horse {
 
     private Rider rider;
     private Breed breed;
-    private int power;
+    private int raiting;
 
     private int id;
 
     public Horse() {
     }
 
-    public Horse(Rider rider, Breed breed, int power) {
+    public Horse(Rider rider, Breed breed, int raiting) {
         this.rider = rider;
         this.breed = breed;
-        this.power = power;
+        this.raiting = raiting;
     }
 
     public Rider getRider() {
@@ -33,12 +33,12 @@ public class Horse {
         this.breed = breed;
     }
 
-    public int getPower() {
-        return power;
+    public int getRaiting() {
+        return raiting;
     }
 
-    public void setPower(int power) {
-        this.power = power;
+    public void setRaiting(int raiting) {
+        this.raiting = raiting;
     }
 
     public int getId() {
@@ -55,7 +55,7 @@ public class Horse {
                 "id=" + id +
                 ", rider=" + rider +
                 ", breed=" + breed +
-                ", power=" + power +
+                ", raiting=" + raiting +
                 '}';
     }
 }

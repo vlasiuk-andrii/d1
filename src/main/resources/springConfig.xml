@@ -8,28 +8,28 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
         <property name="id" value="14"/>
         <property name="rider" value="John"/>
         <property name="breed" value="breed8"/>
-        <property name="power" value="5"/>
+        <property name="raiting" value="5"/>
     </bean>
 
     <bean id="horse2" name="Horse2" class="module2MemoryManagement.task1.domain.Horse">
         <property name="id" value="66"/>
         <property name="rider" value="Brad"/>
         <property name="breed" value="breed15"/>
-        <property name="power" value="2"/>
+        <property name="raiting" value="2"/>
     </bean>
 
     <bean id="horse3" name="Horse3" class="module2MemoryManagement.task1.domain.Horse">
         <property name="id" value="93"/>
         <property name="rider" value="Katrin"/>
         <property name="breed" value="breed9"/>
-        <property name="power" value="6"/>
+        <property name="raiting" value="6"/>
     </bean>
 
     <bean id="horse4" name="Horse4" class="module2MemoryManagement.task1.domain.Horse">
         <property name="id" value="13"/>
         <property name="rider" value="Bob"/>
         <property name="breed" value="breed2"/>
-        <property name="power" value="6"/>
+        <property name="raiting" value="1"/>
     </bean>
 
     <bean id="horseService" name="HorseService" class="module2MemoryManagement.task1.service.HorseService">

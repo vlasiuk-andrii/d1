@@ -17,6 +17,9 @@ public class EmulationService {
     public void setInitialValues(List<Integer> initialValues){
         currentOrder = initialValues;
     }
+    public Integer getWinnerId(){
+        return currentOrder.get(0);
+    }
 
     public List<Integer> generateNewOrder(){
         Collections.shuffle(currentOrder);
