@@ -1,14 +1,17 @@
 package module2MemoryManagement.task1.domain;
 
 public class Race {
+
     private int durationInSeconds;
+    private int amountOfHorses;
     private Horse winner;
 
     public Race() {
     }
 
-    public Race(int durationInSeconds) {
+    public Race(int durationInSeconds, int amountOfHorses) {
         this.durationInSeconds = durationInSeconds;
+        this.amountOfHorses = amountOfHorses;
     }
 
     public Race getRace(){
@@ -23,11 +26,19 @@ public class Race {
         this.winner = winner;
     }
 
-    @Override
-    public String toString() {
-        return "Race{" +
-                "durationInSeconds=" + durationInSeconds +
-                ", winner=" + winner +
-                '}';
+    public int getDurationInSeconds() {
+        return durationInSeconds;
+    }
+
+    public void setDurationInSeconds(int durationInSeconds) {
+        this.durationInSeconds = durationInSeconds;
+    }
+
+    public int getAmountOfHorses() {
+        return amountOfHorses;
+    }
+
+    public void setAmountOfHorses(int amountOfHorses) {
+        this.amountOfHorses = amountOfHorses;
     }
 }

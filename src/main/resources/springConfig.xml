@@ -54,8 +54,8 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
         </constructor-arg>
     </bean>
 
-    <!--<bean id="race" name="Race" class="module2MemoryManagement.task1.domain.Race">-->
-        <!--<constructor-arg name="durationInSeconds" value="4"/>-->
-    <!--</bean>-->
+    <bean id="race" name="Race" class="module2MemoryManagement.task1.domain.Race">
+        <constructor-arg name="durationInSeconds" value="4"/>
+    </bean>
 
 </beans>
