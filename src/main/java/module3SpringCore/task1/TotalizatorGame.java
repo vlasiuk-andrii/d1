@@ -3,6 +3,7 @@ package module3SpringCore.task1;
 import module3SpringCore.task1.domain.Horse;
 import module3SpringCore.task1.service.EmulationService;
 import module3SpringCore.task1.service.HorseService;
+import module3SpringCore.task1.service.RaceService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -21,6 +22,7 @@ public class TotalizatorGame {
 
         HorseService horseService = (HorseService) context.getBean("HorseService");
         EmulationService emulationService = (EmulationService) context.getBean("EmulationService");
+        RaceService raceService = (RaceService) context.getBean("RaceService");
         horseService.getHourses().forEach(System.out::println);
 
         printCharsWithDelay("Enter horseId: ");
@@ -36,9 +38,9 @@ public class TotalizatorGame {
         printCharsWithDelay("\n\n  --- Let's play the game ---\n");
         printCharsWithDelay("\n  1   2   3   4\n");
 
-        //Race race = (Race) context.getBean("Race");
-
-        emulationService.setInitialValues(horseService.getHourses().stream()
+        raceService.generateRacaData();
+        int ampountOfHorses = raceService.getRace().getAmountOfHorses();
+        emulationService.setInitialValues(horseService.getRaceHourses(ampountOfHorses).stream()
                 .map(Horse::getId)
                 .collect(Collectors.toList()));
         printWithSecondDelay(emulationService.generateNewOrder().toString());

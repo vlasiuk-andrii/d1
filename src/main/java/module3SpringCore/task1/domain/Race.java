@@ -9,21 +9,8 @@ public class Race {
     public Race() {
     }
 
-    public Race(int durationInSeconds, int amountOfHorses) {
-        this.durationInSeconds = durationInSeconds;
-        this.amountOfHorses = amountOfHorses;
-    }
-
     public Race getRace(){
         return this;
-    }
-
-    public Horse getWinner() {
-        return winner;
-    }
-
-    public void setWinner(Horse winner) {
-        this.winner = winner;
     }
 
     public int getDurationInSeconds() {
@@ -41,4 +28,10 @@ public class Race {
     public void setAmountOfHorses(int amountOfHorses) {
         this.amountOfHorses = amountOfHorses;
     }
+
+    public void setWinner(Horse winner) {
+        this.winner = winner;
+    }
+
+
 }

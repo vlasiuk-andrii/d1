@@ -54,8 +54,11 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
         </constructor-arg>
     </bean>
 
+    <bean id="raceService" name="RaceService" class="module3SpringCore.task1.service.RaceService">
+        <constructor-arg ref="race"/>
+    </bean>
+
     <bean id="race" name="Race" class="module3SpringCore.task1.domain.Race">
-        <constructor-arg name="durationInSeconds" value="4"/>
     </bean>
 
 </beans>
