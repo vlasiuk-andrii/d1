@@ -1,6 +1,6 @@
-package module2MemoryManagement.task1.service;
+package module3SpringCore.task1.service;
 
-import module2MemoryManagement.task1.domain.Horse;
+import module3SpringCore.task1.domain.Horse;
 
 import java.util.List;
 

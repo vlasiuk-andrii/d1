@@ -1,8 +1,8 @@
-package module2MemoryManagement.task1;
+package module3SpringCore.task1;
 
-import module2MemoryManagement.task1.domain.Horse;
-import module2MemoryManagement.task1.service.EmulationService;
-import module2MemoryManagement.task1.service.HorseService;
+import module3SpringCore.task1.domain.Horse;
+import module3SpringCore.task1.service.EmulationService;
+import module3SpringCore.task1.service.HorseService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 

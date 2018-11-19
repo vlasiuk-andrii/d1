@@ -1,4 +1,4 @@
-package module2MemoryManagement.task1.service;
+package module3SpringCore.task1.service;
 
 public class RaceService {
 

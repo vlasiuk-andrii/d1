@@ -1,4 +1,4 @@
-package module2MemoryManagement.task1.domain;
+package module3SpringCore.task1.domain;
 
 public class Breed {
 
