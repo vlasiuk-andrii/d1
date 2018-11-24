@@ -44,7 +44,7 @@ public class TotalizatorGame {
                 "  Duration:" + raceService.getRace().getDurationInSeconds());
         printPlaces(amountOfHorses);
 
-        emulationService.setInitialValues(horseService.getRaceHourses(amountOfHorses).stream()
+        emulationService.setInitialValues(horseService.getRaceHourses(choosenHorseId, amountOfHorses).stream()
                 .map(Horse::getId)
                 .collect(Collectors.toList()));
 
