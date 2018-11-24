@@ -32,6 +32,20 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
         <property name="raiting" value="1"/>
     </bean>
 
+    <bean id="horse5" name="Horse5" class="module3SpringCore.task1.domain.Horse">
+        <property name="id" value="22"/>
+        <property name="rider" value="John"/>
+        <property name="breed" value="breed3"/>
+        <property name="raiting" value="11"/>
+    </bean>
+
+    <bean id="horse6" name="Horse6" class="module3SpringCore.task1.domain.Horse">
+        <property name="id" value="23"/>
+        <property name="rider" value="William"/>
+        <property name="breed" value="breed3"/>
+        <property name="raiting" value="7"/>
+    </bean>
+
     <bean id="horseService" name="HorseService" class="module3SpringCore.task1.service.HorseService">
         <constructor-arg>
             <list>
@@ -39,6 +53,8 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
                 <ref bean="horse2"/>
                 <ref bean="horse3"/>
                 <ref bean="horse4"/>
+                <ref bean="horse5"/>
+                <ref bean="horse6"/>
             </list>
         </constructor-arg>
     </bean>

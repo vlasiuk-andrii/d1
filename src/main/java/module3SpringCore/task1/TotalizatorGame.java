@@ -9,6 +9,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.Scanner;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import static java.util.concurrent.TimeUnit.MILLISECONDS;
 
@@ -36,29 +37,39 @@ public class TotalizatorGame {
 
         printCharsWithDelay("Your choice is " + choosenHorse.toString());
         printCharsWithDelay("\n\n  --- Let's play the game ---\n");
-        printCharsWithDelay("\n  1   2   3   4\n");
-
         raceService.generateRacaData();
-        int ampountOfHorses = raceService.getRace().getAmountOfHorses();
-        emulationService.setInitialValues(horseService.getRaceHourses(ampountOfHorses).stream()
+
+        int amountOfHorses = raceService.getRace().getAmountOfHorses();
+        printCharsWithDelay("Amount of horses: " + amountOfHorses +
+                "  Duration:" + raceService.getRace().getDurationInSeconds());
+        printPlaces(amountOfHorses);
+
+        emulationService.setInitialValues(horseService.getRaceHourses(amountOfHorses).stream()
                 .map(Horse::getId)
                 .collect(Collectors.toList()));
-        printWithSecondDelay(emulationService.generateNewOrder().toString());
-        printWithSecondDelay(emulationService.generateNewOrder().toString());
-        printWithSecondDelay(emulationService.generateNewOrder().toString());
-        printWithSecondDelay(emulationService.generateNewOrder().toString());
+
+        printResultsOfGame(emulationService, raceService.getRace().getDurationInSeconds());
 
         printCharsWithDelay("The WINNER is - " + horseService.getHourses().stream()
             .filter(horse -> horse.getId() == emulationService.getWinnerId())
             .findFirst()
-            .map(Horse::toString));
+            .map(Horse::toString)
+            .get());
 
         if (emulationService.getWinnerId() == choosenHorseId){
             printCharsWithDelay("\n\nYOU WON!!! Congratulations!!!");
         } else {
-            printCharsWithDelay("\n\nYou loose.. GAME OVER");
+            printCharsWithDelay("\n\nYou lose.. GAME OVER");
         }
 
+    }
+
+    private static void printResultsOfGame(EmulationService emulationService, int durationInSeconds) throws InterruptedException {
+        System.out.println();
+        do {
+            printWithSecondDelay(emulationService.generateNewOrder().toString());
+            durationInSeconds--;
+        } while (durationInSeconds > 0);
     }
 
     private static void printCharsWithDelay(String data) throws InterruptedException {
@@ -71,5 +82,11 @@ public class TotalizatorGame {
     private static void printWithSecondDelay(String data) throws InterruptedException {
         MILLISECONDS.sleep(2000);
         System.out.println(data);
+    }
+
+    private static void printPlaces(int total) {
+        System.out.println();
+        IntStream.range(1, total + 1)
+                .forEach(i -> System.out.print(" " + String.valueOf(i) + "  "));
     }
 }
