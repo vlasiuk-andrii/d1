@@ -4,8 +4,10 @@ import java.sql.*;
 
 public class MyJdbcApp {
 
+    static final String DB_NAME = "students6";
     static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
-    static final String DB_URL = "jdbc:mysql://localhost:3306/?useSSL=false";
+    static final String DB_URL = "jdbc:mysql://localhost:3306/";
+    static final String URL_PARAMETERS = "?useSSL=false";
     static final String USER = "user01";
     static final String PASS = "user01";
 
@@ -16,15 +18,15 @@ public class MyJdbcApp {
             Class.forName(JDBC_DRIVER);
 
             System.out.println("Connecting to database...");
-            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            conn = DriverManager.getConnection(DB_URL + URL_PARAMETERS, USER, PASS);
 
             System.out.println("Creating database...");
             stmt = conn.createStatement();
 
-            stmt.executeUpdate("CREATE DATABASE students5");
+            stmt.executeUpdate("CREATE DATABASE " + DB_NAME);
             System.out.println("Database created successfully...");
 
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/students5?useSSL=false", USER, PASS);
+            conn = DriverManager.getConnection(DB_URL + DB_NAME + URL_PARAMETERS, USER, PASS);
             stmt = conn.createStatement();
 
             stmt.executeUpdate("CREATE TABLE Users" +
