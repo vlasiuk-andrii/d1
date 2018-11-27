@@ -5,6 +5,7 @@ import module3SpringCore.task2.service.EmulationService;
 import module3SpringCore.task2.service.HorseService;
 import module3SpringCore.task2.service.RaceService;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.Scanner;
@@ -16,14 +17,15 @@ import static java.util.concurrent.TimeUnit.MILLISECONDS;
 public class TotalizatorGameAnnotations {
 
     public static void main(String[] args) throws InterruptedException {
-        ApplicationContext context = new ClassPathXmlApplicationContext("springConfigAnnotations.xml");
+        @SuppressWarnings("resource")
+        ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
 
         printCharsWithDelay("\nYou are welcome to the Totalizator Game!\n");
         printCharsWithDelay("Choose you horse please:\n");
 
-        HorseService horseService = (HorseService) context.getBean("HorseService");
-        EmulationService emulationService = (EmulationService) context.getBean("EmulationService");
-        RaceService raceService = (RaceService) context.getBean("RaceService");
+        HorseService horseService = context.getBean("HorseService", HorseService.class);
+        EmulationService emulationService = context.getBean("EmulationService", EmulationService.class);
+        RaceService raceService = context.getBean("RaceService", RaceService.class);
         horseService.getHourses().forEach(System.out::println);
 
         printCharsWithDelay("Enter horseId: ");
