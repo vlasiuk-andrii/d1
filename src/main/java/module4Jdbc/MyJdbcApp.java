@@ -4,7 +4,7 @@ import java.sql.*;
 
 public class MyJdbcApp {
 
-    static final String DB_NAME = "students3";
+    static final String DB_NAME = "students9";
     static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
     static final String DB_URL = "jdbc:mysql://localhost:3306/";
     static final String URL_PARAMETERS = "?useSSL=false";
@@ -37,30 +37,53 @@ public class MyJdbcApp {
             stmt.executeUpdate("CREATE TABLE Friendships" +
                     "(userId1 INTEGER not NULL, " +
                     " userId2 INTEGER not NULL, " +
-                    " timestamp DATETIME(6))");
+                    " timestamp DATETIME(0))");
             stmt.executeUpdate("CREATE TABLE Posts" +
                     "(id INTEGER not NULL, " +
                     " userId INTEGER not NULL, " +
                     " text VARCHAR(255), " +
-                    " timestamp DATETIME(6))");
+                    " timestamp DATETIME(0))");
             stmt.executeUpdate("CREATE TABLE Likes" +
                     "(postId INTEGER not NULL, " +
                     " userId INTEGER not NULL, " +
-                    " timestamp DATETIME(6))");
+                    " timestamp DATETIME(0))");
             System.out.println("Tables were created");
 
             stmt.executeUpdate("INSERT INTO Users (id,name,surname,date) VALUES (" +
-                    "1,\"Warren\",\"Rosales\",\"19-05-16\"),(" +
-                    "2,\"Clarke\",\"Mckay\",\"19-06-28\"),(" +
-                    "3,\"Michael\",\"Hansen\",\"18-01-30\"),(" +
-                    "4,\"Naomi\",\"Morin\",\"18-03-16\"),(" +
-                    "5,\"Bruce\",\"Barlow\",\"18-12-01\"),(" +
-                    "6,\"Deirdre\",\"Gonzalez\",\"18-05-07\"),(" +
-                    "7,\"Lael\",\"Barnes\",\"18-09-20\"),(" +
-                    "8,\"Theodore\",\"Lynn\",\"18-02-17\"),(" +
-                    "9,\"Hayfa\",\"Suarez\",\"19-06-21\"),(" +
-                    "10,\"Orla\",\"Bradford\",\"19-01-16\");");
+                    "1,\"Warren\",\"Rosales\",\"2019-05-16\"),(" +
+                    "2,\"Clarke\",\"Mckay\",\"2019-06-28\"),(" +
+                    "3,\"Michael\",\"Hansen\",\"2018-01-30\"),(" +
+                    "4,\"Naomi\",\"Morin\",\"2018-03-16\"),(" +
+                    "5,\"Bruce\",\"Barlow\",\"2018-12-01\"),(" +
+                    "6,\"Deirdre\",\"Gonzalez\",\"2018-05-07\"),(" +
+                    "7,\"Lael\",\"Barnes\",\"2018-09-20\"),(" +
+                    "8,\"Theodore\",\"Lynn\",\"2018-02-17\"),(" +
+                    "9,\"Hayfa\",\"Suarez\",\"2019-06-21\"),(" +
+                    "10,\"Orla\",\"Bradford\",\"2019-01-16\");");
+
+            stmt.executeUpdate("INSERT INTO Friendships (userId1,userId2,timestamp) VALUES (" +
+                    "1,2,\"2018-09-08 17:45:04\"),(" +
+                    "1,3,\"2018-08-11 18:51:10\"),(" +
+                    "1,4,\"2018-08-11 18:51:10\"),(" +
+                    "4,5,\"2018-08-11 18:51:10\"),(" +
+                    "6,7,\"2018-08-11 18:51:10\"),(" +
+                    "8,9,\"2018-10-07 22:00:00\");");
+
+            stmt.executeUpdate("INSERT INTO Posts (id,userId,text,timestamp) VALUES (" +
+                    "102,1,\"Text of some post with id=102\",\"2018-10-04 17:45:04\"),(" +
+                    "699,2,\"Text of some post with id=699\",\"2018-02-15 18:51:10\"),(" +
+                    "437,4,\"Text of some post with id=437\",\"2018-04-18 22:00:00\");");
+
+            stmt.executeUpdate("INSERT INTO Likes (postId,userId,timestamp) VALUES (" +
+                    "102,1, \"2017-03-04 17:45:04\"),(" +
+                    "699,1, \"2017-03-15 18:51:10\"),(" +
+                    "102,10,\"2017-03-04 17:45:04\"),(" +
+                    "699,10,\"2017-03-15 18:51:10\"),(" +
+                    "437,10,\"2017-04-18 22:00:00\");");
             System.out.println("Tables were filled in with data");
+
+            stmt.execute("SELECT ");
+            System.out.println("RESULT=" + stmt.getResultSet());
 
         }catch(SQLException se){
             se.printStackTrace();
