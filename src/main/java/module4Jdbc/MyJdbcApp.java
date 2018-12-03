@@ -4,7 +4,7 @@ import java.sql.*;
 
 public class MyJdbcApp {
 
-    static final String DB_NAME = "students13";
+    static final String DB_NAME = "students15";
     static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
     static final String DB_URL = "jdbc:mysql://localhost:3306/";
     static final String URL_PARAMETERS = "?useSSL=false";
@@ -82,18 +82,32 @@ public class MyJdbcApp {
                     "437,10,\"2017-04-18 22:00:00\");");
             System.out.println("Tables were filled in with data");
 
-            stmt.execute("SELECT userId, COUNT(userId) as 'correctLikes'\n" +
+            stmt.execute("SELECT *\n" +
+                    "FROM \n" +
+                    "(SELECT userId, COUNT(userId) as 'correctLikes'\n" +
                     "FROM Likes\n" +
                     "WHERE timestamp LIKE '2017-03%'\n" +
-                    "GROUP BY userId");
+                    "GROUP BY userId) as A\n" +
+                    "JOIN\n" +
+                    "(SELECT userId1, COUNT(userId1) as 'correctFriends'\n" +
+                    "FROM Friendships\n" +
+                    "GROUP BY userId1\n" +
+                    ")  as B\n" +
+                    "ON A.userId=B.userId1\n" +
+                    "JOIN \n" +
+                    "(SELECT id, name\n" +
+                    "FROM Users\n" +
+                    ") as C\n" +
+                    "ON A.userID=C.id\n" +
+                    "WHERE correctLikes>2 AND correctFriends>2");
 
             System.out.println("SELECT RESULT = ");
             ResultSet rs = stmt.getResultSet();
 
             while (rs.next()) {
                 String id = rs.getString(1);
-                String name = rs.getString(2);
-                System.out.println(id + "\t" + name + "\t");
+                String name = rs.getString(6);
+                System.out.println("id=" + id + "\t" + "name=" + name + "\t");
             }
 
         }catch(SQLException se){
