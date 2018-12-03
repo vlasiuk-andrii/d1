@@ -4,7 +4,7 @@ import java.sql.*;
 
 public class MyJdbcApp {
 
-    static final String DB_NAME = "students9";
+    static final String DB_NAME = "students13";
     static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
     static final String DB_URL = "jdbc:mysql://localhost:3306/";
     static final String URL_PARAMETERS = "?useSSL=false";
@@ -77,13 +77,24 @@ public class MyJdbcApp {
             stmt.executeUpdate("INSERT INTO Likes (postId,userId,timestamp) VALUES (" +
                     "102,1, \"2017-03-04 17:45:04\"),(" +
                     "699,1, \"2017-03-15 18:51:10\"),(" +
-                    "102,10,\"2017-03-04 17:45:04\"),(" +
+                    "102,1, \"2017-03-06 17:45:04\"),(" +
                     "699,10,\"2017-03-15 18:51:10\"),(" +
                     "437,10,\"2017-04-18 22:00:00\");");
             System.out.println("Tables were filled in with data");
 
-            stmt.execute("SELECT ");
-            System.out.println("RESULT=" + stmt.getResultSet());
+            stmt.execute("SELECT userId, COUNT(userId) as 'correctLikes'\n" +
+                    "FROM Likes\n" +
+                    "WHERE timestamp LIKE '2017-03%'\n" +
+                    "GROUP BY userId");
+
+            System.out.println("SELECT RESULT = ");
+            ResultSet rs = stmt.getResultSet();
+
+            while (rs.next()) {
+                String id = rs.getString(1);
+                String name = rs.getString(2);
+                System.out.println(id + "\t" + name + "\t");
+            }
 
         }catch(SQLException se){
             se.printStackTrace();
