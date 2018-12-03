@@ -4,7 +4,7 @@ import java.sql.*;
 
 public class MyJdbcApp {
 
-    static final String DB_NAME = "students9";
+    static final String DB_NAME = "students3";
     static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
     static final String DB_URL = "jdbc:mysql://localhost:3306/";
     static final String URL_PARAMETERS = "?useSSL=false";
@@ -33,7 +33,7 @@ public class MyJdbcApp {
                     "(id INTEGER not NULL, " +
                     " name VARCHAR(255), " +
                     " surname VARCHAR(255), " +
-                    " birthdate DATE");
+                    " date DATE)");
             stmt.executeUpdate("CREATE TABLE Friendships" +
                     "(userId1 INTEGER not NULL, " +
                     " userId2 INTEGER not NULL, " +
@@ -49,7 +49,7 @@ public class MyJdbcApp {
                     " timestamp DATETIME(6))");
             System.out.println("Tables were created");
 
-            stmt.executeUpdate("INSERT INTO Users (id,name,surname,birthdate) VALUES (" +
+            stmt.executeUpdate("INSERT INTO Users (id,name,surname,date) VALUES (" +
                     "1,\"Warren\",\"Rosales\",\"19-05-16\"),(" +
                     "2,\"Clarke\",\"Mckay\",\"19-06-28\"),(" +
                     "3,\"Michael\",\"Hansen\",\"18-01-30\"),(" +
